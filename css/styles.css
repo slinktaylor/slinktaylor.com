@@ -259,8 +259,8 @@ html {
     background-image: url('../images/slinksite-extend.jpg');
     background-attachment: fixed;
     background-size: cover;
-    /* Mobile: center the image, no offset */
-    background-position: center top;
+    /* Mobile: position to show face/upper body */
+    background-position: center 15%;
     background-repeat: no-repeat;
     min-height: 100vh;
 }
@@ -426,8 +426,11 @@ html {
     border-radius: 12px;
     border: 2px solid #fff;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    background: #111;
+    /* Gradient background while loading - looks intentional */
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    /* Ensure minimum height so empty videos don't collapse */
+    min-height: 150px;
 }
 
 .masonry-item video:hover {
