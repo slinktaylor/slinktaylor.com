@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slink Taylor</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            background-color: #000;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main content container */
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        /* Logo styling */
+        .logo {
+            width: 420px;
+            max-width: 80vw;
+            margin-bottom: 0;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Navigation links */
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            display: block;
+        }
+
+        .nav-links img {
+            height: 90px;
+            width: auto;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .nav-links a:hover img {
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.2));
+        }
+
+        /* Fade in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .content {
+            animation: fadeIn 1.2s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="images/adobe/aebe762e-a7c1-4cb4-967c-105e364e7e97_rw_3840.png" alt="Slink Taylor">
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-links">
+            <a href="https://artists.landr.com/056870739410">
+                <img src="images/adobe/ab184219-e51a-4943-b3bf-de90a2621ab5_rw_1920.png" alt="Listen">
+            </a>
+            <a href="https://www.instagram.com/slinktaylor/" target="_blank" rel="noopener">
+                <img src="images/adobe/fac23045-e2fe-4531-857a-017ce107cbe2_rw_1920.png" alt="Follow">
+            </a>
+        </nav>
+    </div>
+</body>
+</html>

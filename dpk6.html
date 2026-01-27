@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPK Option 6 - Masonry Grid</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* OPTION 6: Masonry-style layout using CSS columns */
+        .masonry-gallery {
+            column-count: 2;
+            column-gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        .masonry-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            background: #111;
+            transition: all 0.3s ease;
+        }
+        .masonry-item video:hover {
+            box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
+            transform: scale(1.02);
+        }
+        .video-gallery-open {
+            padding: 2rem 0 4rem;
+        }
+        @media (max-width: 600px) {
+            .masonry-gallery {
+                column-count: 1;
+            }
+        }
+        .option-label {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 200, 0, 0.9);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="dpk-page">
+    <div class="option-label">Option 6: Masonry Grid</div>
+    <header class="dpk-header">
+        <a href="index.html" class="dpk-logo">Slink Taylor</a>
+    </header>
+
+    <main class="dpk-content">
+        <section class="video-gallery-open">
+            <h2>In Action</h2>
+            <div class="masonry-gallery">
+                <div class="masonry-item">
+                    <video controls preload="metadata">
+                        <source src="videos/EZB2-A.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="masonry-item">
+                    <video controls preload="metadata">
+                        <source src="videos/EZB1-B.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="masonry-item">
+                    <video controls preload="metadata">
+                        <source src="videos/lyny-b.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="masonry-item">
+                    <video controls preload="metadata">
+                        <source src="videos/jackfrost-b.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="masonry-item">
+                    <video controls preload="metadata">
+                        <source src="videos/enigmafar-b.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="masonry-item">
+                    <video controls preload="metadata">
+                        <source src="videos/Mersiv Intro +-b.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/main.js"></script>
+    <script>
+        // Pause other videos when one plays
+        document.querySelectorAll('.masonry-item video').forEach(video => {
+            video.addEventListener('play', () => {
+                document.querySelectorAll('.masonry-item video').forEach(v => {
+                    if (v !== video && !v.paused) v.pause();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

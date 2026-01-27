@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPK Option 1 - Uniform 16:9 Crop</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* OPTION 1: Force all videos to 16:9 with crop */
+        .gallery-page-uniform {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            scroll-snap-align: start;
+        }
+        .gallery-page-uniform video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover; /* Crops to fill */
+            display: block;
+            border-radius: 8px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            background: #111;
+        }
+        .gallery-page-uniform video:hover {
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+        }
+        .option-label {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 200, 0, 0.9);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="dpk-page">
+    <div class="option-label">Option 1: Uniform 16:9 Crop</div>
+    <header class="dpk-header">
+        <a href="index.html" class="dpk-logo">Slink Taylor</a>
+    </header>
+
+    <main class="dpk-content">
+        <section class="video-gallery-open">
+            <h2>In Action</h2>
+            <div class="gallery-wrapper">
+                <button class="gallery-nav gallery-prev" aria-label="Previous">&larr;</button>
+                <div class="gallery-scroll">
+                    <div class="gallery-page-uniform">
+                        <video controls preload="metadata">
+                            <source src="videos/EZB2-A.mp4" type="video/mp4">
+                        </video>
+                        <video controls preload="metadata">
+                            <source src="videos/EZB1-B.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="gallery-page-uniform">
+                        <video controls preload="metadata">
+                            <source src="videos/lyny-b.mp4" type="video/mp4">
+                        </video>
+                        <video controls preload="metadata">
+                            <source src="videos/jackfrost-b.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="gallery-page-uniform">
+                        <video controls preload="metadata">
+                            <source src="videos/enigmafar-b.mp4" type="video/mp4">
+                        </video>
+                        <video controls preload="metadata">
+                            <source src="videos/Mersiv Intro +-b.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <button class="gallery-nav gallery-next" aria-label="Next">&rarr;</button>
+            </div>
+        </section>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>

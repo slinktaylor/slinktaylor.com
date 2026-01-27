@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPK Option 5 - Vertical Stack</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* OPTION 5: Vertical scroll, one video per row */
+        .vertical-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .vertical-video {
+            width: 100%;
+            border-radius: 12px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            background: #111;
+        }
+        .vertical-video:hover {
+            box-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
+        }
+        .video-gallery-open {
+            padding: 2rem 0 4rem;
+        }
+        .option-label {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 200, 0, 0.9);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="dpk-page">
+    <div class="option-label">Option 5: Vertical Stack</div>
+    <header class="dpk-header">
+        <a href="index.html" class="dpk-logo">Slink Taylor</a>
+    </header>
+
+    <main class="dpk-content">
+        <section class="video-gallery-open">
+            <h2>In Action</h2>
+            <div class="vertical-gallery">
+                <video class="vertical-video" controls preload="metadata">
+                    <source src="videos/EZB2-A.mp4" type="video/mp4">
+                </video>
+                <video class="vertical-video" controls preload="metadata">
+                    <source src="videos/EZB1-B.mp4" type="video/mp4">
+                </video>
+                <video class="vertical-video" controls preload="metadata">
+                    <source src="videos/lyny-b.mp4" type="video/mp4">
+                </video>
+                <video class="vertical-video" controls preload="metadata">
+                    <source src="videos/jackfrost-b.mp4" type="video/mp4">
+                </video>
+                <video class="vertical-video" controls preload="metadata">
+                    <source src="videos/enigmafar-b.mp4" type="video/mp4">
+                </video>
+                <video class="vertical-video" controls preload="metadata">
+                    <source src="videos/Mersiv Intro +-b.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+    </main>
+    <script src="js/main.js"></script>
+    <script>
+        // Pause other videos when one plays
+        document.querySelectorAll('.vertical-video').forEach(video => {
+            video.addEventListener('play', () => {
+                document.querySelectorAll('.vertical-video').forEach(v => {
+                    if (v !== video && !v.paused) v.pause();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

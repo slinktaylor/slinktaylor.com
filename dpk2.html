@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPK Option 2 - Single Video Focus</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* OPTION 2: Single video per page, centered and larger */
+        .gallery-single {
+            flex: 1;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 2rem;
+            padding-bottom: 1rem;
+        }
+        .gallery-single::-webkit-scrollbar { height: 8px; }
+        .gallery-single::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 4px; }
+        .gallery-single::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.4); border-radius: 4px; }
+
+        .single-video-page {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .single-video-page video {
+            max-width: 90%;
+            max-height: 60vh;
+            width: auto;
+            height: auto;
+            border-radius: 12px;
+            border: 3px solid #fff;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            background: #111;
+        }
+        .single-video-page video:hover {
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+        }
+        .video-counter {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+        .option-label {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 200, 0, 0.9);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="dpk-page">
+    <div class="option-label">Option 2: Single Video Focus</div>
+    <header class="dpk-header">
+        <a href="index.html" class="dpk-logo">Slink Taylor</a>
+    </header>
+
+    <main class="dpk-content">
+        <section class="video-gallery-open">
+            <h2>In Action</h2>
+            <div class="gallery-wrapper">
+                <button class="gallery-nav gallery-prev" aria-label="Previous">&larr;</button>
+                <div class="gallery-single gallery-scroll">
+                    <div class="single-video-page">
+                        <video controls preload="metadata">
+                            <source src="videos/EZB2-A.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="single-video-page">
+                        <video controls preload="metadata">
+                            <source src="videos/EZB1-B.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="single-video-page">
+                        <video controls preload="metadata">
+                            <source src="videos/lyny-b.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="single-video-page">
+                        <video controls preload="metadata">
+                            <source src="videos/jackfrost-b.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="single-video-page">
+                        <video controls preload="metadata">
+                            <source src="videos/enigmafar-b.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="single-video-page">
+                        <video controls preload="metadata">
+                            <source src="videos/Mersiv Intro +-b.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <button class="gallery-nav gallery-next" aria-label="Next">&rarr;</button>
+            </div>
+        </section>
+    </main>
+    <script src="js/main.js"></script>
+</body>
+</html>

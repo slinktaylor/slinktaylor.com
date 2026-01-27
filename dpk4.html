@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPK Option 4 - Thumbnail Grid + Modal</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* OPTION 4: Thumbnail grid that opens in modal */
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .video-thumb {
+            aspect-ratio: 1 / 1;
+            background: #111;
+            border-radius: 12px;
+            border: 2px solid #fff;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .video-thumb:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+        .video-thumb video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .video-thumb::after {
+            content: "▶";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0,0,0,0.8);
+            opacity: 0.8;
+        }
+        .video-thumb:hover::after {
+            opacity: 1;
+        }
+
+        /* Modal styles */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-modal.active {
+            display: flex;
+        }
+        .video-modal video {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 12px;
+            border: 3px solid #fff;
+        }
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .option-label {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 200, 0, 0.9);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body class="dpk-page">
+    <div class="option-label">Option 4: Thumbnail Grid + Modal</div>
+    <header class="dpk-header">
+        <a href="index.html" class="dpk-logo">Slink Taylor</a>
+    </header>
+
+    <main class="dpk-content">
+        <section class="video-gallery-open">
+            <h2>In Action</h2>
+            <div class="thumbnail-grid">
+                <div class="video-thumb" data-src="videos/EZB2-A.mp4">
+                    <video preload="metadata" muted>
+                        <source src="videos/EZB2-A.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-thumb" data-src="videos/EZB1-B.mp4">
+                    <video preload="metadata" muted>
+                        <source src="videos/EZB1-B.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-thumb" data-src="videos/lyny-b.mp4">
+                    <video preload="metadata" muted>
+                        <source src="videos/lyny-b.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-thumb" data-src="videos/jackfrost-b.mp4">
+                    <video preload="metadata" muted>
+                        <source src="videos/jackfrost-b.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-thumb" data-src="videos/enigmafar-b.mp4">
+                    <video preload="metadata" muted>
+                        <source src="videos/enigmafar-b.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-thumb" data-src="videos/Mersiv Intro +-b.mp4">
+                    <video preload="metadata" muted>
+                        <source src="videos/Mersiv Intro +-b.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for full video -->
+    <div class="video-modal" id="videoModal">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <video id="modalVideo" controls></video>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Thumbnail click to open modal
+        document.querySelectorAll('.video-thumb').forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                const src = thumb.dataset.src;
+                const modal = document.getElementById('videoModal');
+                const video = document.getElementById('modalVideo');
+                video.src = src;
+                modal.classList.add('active');
+                video.play();
+            });
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            video.pause();
+            video.src = '';
+            modal.classList.remove('active');
+        }
+
+        // Close on background click
+        document.getElementById('videoModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
