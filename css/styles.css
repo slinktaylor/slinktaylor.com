@@ -257,10 +257,11 @@ html {
 /* Full-page fixed background with the illustration */
 .dpk-page {
     background-image: url('../images/slinksite-extend.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    /* Mobile: position to show face/upper body */
-    background-position: center 15%;
+    /* Mobile: scroll (fixed is broken on iOS Safari) */
+    background-attachment: scroll;
+    /* Mobile: show full width of image, positioned at top to peek above content */
+    background-size: 100% auto;
+    background-position: top center;
     background-repeat: no-repeat;
     min-height: 100vh;
 }
@@ -296,8 +297,8 @@ html {
 .dpk-content {
     max-width: 900px;
     margin: 0 auto;
-    /* Mobile: smaller top padding so content is visible */
-    padding: 20vh 0.75rem 2rem;
+    /* Mobile: top padding creates peek effect - image shows above content */
+    padding: 45vh 0.75rem 2rem;
     opacity: 0;
     animation: fadeIn 0.5s ease forwards;
 }
@@ -664,8 +665,10 @@ html {
 
 /* Responsive: Tablet and up */
 @media (min-width: 768px) {
-    /* Background offset for larger screens */
+    /* Desktop: fixed background with cover for full-screen effect */
     .dpk-page {
+        background-attachment: fixed;
+        background-size: cover;
         background-position: center -90px;
     }
 
