@@ -254,16 +254,28 @@ html {
    Mobile-first approach
    ===================================================== */
 
-/* Full-page fixed background with the illustration */
+/* Full-page fixed background with the illustration
+   Using ::before pseudo-element because background-attachment: fixed
+   is broken on iOS Safari */
 .dpk-page {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Fixed background image via pseudo-element (iOS Safari workaround) */
+.dpk-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('../images/slinksite-extend.jpg');
-    /* Mobile: scroll (fixed is broken on iOS Safari) */
-    background-attachment: scroll;
-    /* Mobile: show full width of image, positioned at top to peek above content */
+    /* Mobile: show full width of image at top */
     background-size: 100% auto;
     background-position: top center;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    z-index: -1;
 }
 
 /* DPK Header - small logo in corner */
@@ -665,9 +677,8 @@ html {
 
 /* Responsive: Tablet and up */
 @media (min-width: 768px) {
-    /* Desktop: fixed background with cover for full-screen effect */
-    .dpk-page {
-        background-attachment: fixed;
+    /* Desktop: cover sizing with offset position */
+    .dpk-page::before {
         background-size: cover;
         background-position: center -90px;
     }
